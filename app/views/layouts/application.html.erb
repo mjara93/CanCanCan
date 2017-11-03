@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DeviseG10</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <ul>
+      <% unless current_user.nil? %>
+      <li><%= link_to "Cerrar sesion #{current_user.email}", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+      <li><%= link_to 'logueate!', new_user_session_path %></li>
+      <% end %>
+    </ul>
+    <%= yield %>
+  </body>
+</html>
